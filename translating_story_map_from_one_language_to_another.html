@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EntityExtraction-FireReports</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>translating_story_map_from_one_language_to_another</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14243,7 +14243,7 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Fire-report-data-extraction-with-EntityRecognizer">Fire report data extraction with EntityRecognizer<a class="anchor-link" href="#Fire-report-data-extraction-with-EntityRecognizer">&#182;</a></h1>
+<h1 id="Translate-Story-Map-from-English-to-Spanish">Translate Story Map from English to Spanish<a class="anchor-link" href="#Translate-Story-Map-from-English-to-Spanish">&#182;</a></h1>
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14256,8 +14256,9 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">arcgis.learn</span> <span class="kn">import</span> <span class="n">EntityRecognizer</span>
-<span class="kn">from</span> <span class="nn">arcgis.learn</span> <span class="kn">import</span> <span class="n">prepare_data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">arcgis</span> <span class="kn">import</span> <span class="n">GIS</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">from</span> <span class="nn">arcgis.learn.text</span> <span class="kn">import</span> <span class="n">TextTranslator</span>
 </pre></div>
 
      </div>
@@ -14268,7 +14269,7 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Data-Preperation">Data Preperation<a class="anchor-link" href="#Data-Preperation">&#182;</a></h3>
+<h3 id="Connect-to-GIS-and-clone-Story-Map">Connect to GIS and clone Story Map<a class="anchor-link" href="#Connect-to-GIS-and-clone-Story-Map">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
@@ -14276,7 +14277,8 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="s1">&#39;labelled_updated_fire_reports.json&#39;</span><span class="p">,</span> <span class="n">dataset_type</span><span class="o">=</span><span class="s1">&#39;ner_json&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">agol</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">()</span>
+<span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14290,7 +14292,8 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">show_batch</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">storymapitem</span> <span class="o">=</span> <span class="n">agol</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;c8eef2a96c88489c92010a63d0944881&#39;</span><span class="p">)</span>
+<span class="n">storymapitem</span>
 </pre></div>
 
      </div>
@@ -14311,126 +14314,22 @@ a.anchor-link {
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="item_container" style="height: auto; overflow: hidden; border: 1px solid #cfcfcf; border-radius: 2px; background: #f6fafa; line-height: 1.21429em; padding: 10px;">
+                    <div class="item_left" style="width: 210px; float: left;">
+                       <a href='https://www.arcgis.com/home/item.html?id=c8eef2a96c88489c92010a63d0944881' target='_blank'>
+                        <img src='https://www.arcgis.com/sharing/rest//content/items/c8eef2a96c88489c92010a63d0944881/info/thumbnail/ago_downloaded.jpg' class="itemThumbnail">
+                       </a>
+                    </div>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>text</th>
-      <th>Address</th>
-      <th>Date_and_Time</th>
-      <th>Incident_Type</th>
-      <th>Number_of_Engines</th>
-      <th>Response_Unit</th>
-      <th>Title</th>
-      <th>time_spent_at_incident</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Industrial paper shredder fire in Widnes Time ...</td>
-      <td>[Pickerings Road, Widnes]</td>
-      <td>[26/04/2018 - 21:07]</td>
-      <td>[fire]</td>
-      <td>[Two fire engines]</td>
-      <td>[Widnes, Runcorn]</td>
-      <td>[Industrial paper shredder fire in Widnes]</td>
-      <td>[around half-an-hour]</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Fire in field in Crewe Time of Incident: 07/03...</td>
-      <td>[Vicarage Road, Crewe]</td>
-      <td>[07/03/2018 - 12:48]</td>
-      <td>[fire]</td>
-      <td>[One fire engine]</td>
-      <td>[Crewe]</td>
-      <td>[Fire in field in Crewe]</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Car fire in Chester Time of Incident: 05/02/20...</td>
-      <td>[Waverley Terrace, Chester]</td>
-      <td>[05/02/2018 - 22:26]</td>
-      <td>[car fire]</td>
-      <td>[One fire engine]</td>
-      <td>[Chester]</td>
-      <td>[Car fire in Chester]</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Industrial paper shredder fire in Widnes Time ...</td>
-      <td>[Pickerings Road, Widnes]</td>
-      <td>[26/04/2018 - 21:07]</td>
-      <td>[fire]</td>
-      <td>[Two fire engines]</td>
-      <td>[Widnes, Runcorn]</td>
-      <td>[Industrial paper shredder fire in Widnes]</td>
-      <td>[around half-an-hour]</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Van fire in Chester Time of Incident: 05/10/20...</td>
-      <td>[Christleton Road, Boughton, Chester]</td>
-      <td>[05/10/2018 - 10:45]</td>
-      <td>[van fire]</td>
-      <td>[One fire engine]</td>
-      <td>[Tarporley, Widnes]</td>
-      <td>[Van fire in Chester]</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Industrial skip fire in Crewe Time of Incident...</td>
-      <td>[Gresty Road, Crewe]</td>
-      <td>[27/11/2018 - 09:16]</td>
-      <td>[fire]</td>
-      <td>[Two fire engines]</td>
-      <td>[Crewe]</td>
-      <td>[Industrial skip fire in Crewe]</td>
-      <td>[45 minutes]</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Skip fire in Warrington Time of Incident: 25/1...</td>
-      <td>[Griffiths Street, Warrington]</td>
-      <td>[25/10/2018 - 22:24]</td>
-      <td>[skip fire]</td>
-      <td>[One fire engine]</td>
-      <td>[Warrington]</td>
-      <td>[Skip fire in Warrington]</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Fire at a dry cleaner's in Warrington Time of ...</td>
-      <td>[Gaskell Street, Warrington]</td>
-      <td>[03/12/2018 - 17:14]</td>
-      <td>[fire]</td>
-      <td>[One fire engine]</td>
-      <td>[Warrington]</td>
-      <td>[Fire at a dry cleaner's in Warrington]</td>
-      <td>[45 minutes]</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+                    <div class="item_right"     style="float: none; width: auto; overflow: hidden;">
+                        <a href='https://www.arcgis.com/home/item.html?id=c8eef2a96c88489c92010a63d0944881' target='_blank'><b>South Pleasant Valley Road</b>
+                        </a>
+                        <br/>(Cesar Chavez Street to Elmont Drive)<img src='https://www.arcgis.com/home/js/jsapi/esri/css/images/item_type_icons/layers16.png' style="vertical-align:middle;">StoryMap by ATD_Publisher
+                        <br/>Last Modified: September 08, 2020
+                        <br/>0 comments, 2,332 views
+                    </div>
+                </div>
+                
 </div>
 
 </div>
@@ -14439,37 +14338,15 @@ a.anchor-link {
 
 </div>
 
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="EntityRecognizer-model">EntityRecognizer model<a class="anchor-link" href="#EntityRecognizer-model">&#182;</a></h3>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">EntityRecognizer</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Model-training">Model training<a class="anchor-link" href="#Model-training">&#182;</a></h3>
-</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">lr_find</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cloned_items</span> <span class="o">=</span> <span class="n">gis</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">clone_items</span><span class="p">([</span><span class="n">storymapitem</span><span class="p">],</span> <span class="n">search_existing_items</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">cloned_item</span> <span class="o">=</span> <span class="n">cloned_items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">cloned_item</span>
 </pre></div>
 
      </div>
@@ -14481,22 +14358,6 @@ a.anchor-link {
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
 
 <div class="jp-OutputArea-child">
 
@@ -14505,239 +14366,23 @@ a.anchor-link {
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div class="item_container" style="height: auto; overflow: hidden; border: 1px solid #cfcfcf; border-radius: 2px; background: #f6fafa; line-height: 1.21429em; padding: 10px;">
+                    <div class="item_left" style="width: 210px; float: left;">
+                       <a href='https://geosaurus.maps.arcgis.com/home/item.html?id=a5af5750f9d143238d72bac224f204fb' target='_blank'>
+                        <img src='data:image/png;base64,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' width='200' height='133' class="itemThumbnail">
+                       </a>
+                    </div>
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>0.0005943497684706441</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">0.00059</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: left;">
-      <th>epoch</th>
-      <th>losses</th>
-      <th>val_loss</th>
-      <th>precision_score</th>
-      <th>recall_score</th>
-      <th>f1_score</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>73.21</td>
-      <td>10.28</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>12.6</td>
-      <td>6.26</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>12.22</td>
-      <td>6.01</td>
-      <td>0.08</td>
-      <td>0.02</td>
-      <td>0.03</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>18.87</td>
-      <td>17.84</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>34.07</td>
-      <td>15.51</td>
-      <td>0.36</td>
-      <td>0.21</td>
-      <td>0.27</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>30.28</td>
-      <td>13.83</td>
-      <td>0.31</td>
-      <td>0.14</td>
-      <td>0.19</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>24.05</td>
-      <td>19.98</td>
-      <td>0.24</td>
-      <td>0.18</td>
-      <td>0.21</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>20.83</td>
-      <td>7.91</td>
-      <td>0.4</td>
-      <td>0.38</td>
-      <td>0.39</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>15.83</td>
-      <td>7.47</td>
-      <td>0.72</td>
-      <td>0.71</td>
-      <td>0.72</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>11.9</td>
-      <td>4.87</td>
-      <td>0.89</td>
-      <td>0.89</td>
-      <td>0.89</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>8.34</td>
-      <td>2.09</td>
-      <td>0.88</td>
-      <td>0.89</td>
-      <td>0.89</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>5.9</td>
-      <td>1.45</td>
-      <td>0.88</td>
-      <td>0.89</td>
-      <td>0.89</td>
-      <td>00:00:02</td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>3.68</td>
-      <td>1.03</td>
-      <td>0.91</td>
-      <td>0.89</td>
-      <td>0.9</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td>3.97</td>
-      <td>1.13</td>
-      <td>0.95</td>
-      <td>0.94</td>
-      <td>0.95</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>14</td>
-      <td>3.37</td>
-      <td>1.08</td>
-      <td>0.98</td>
-      <td>0.95</td>
-      <td>0.97</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>15</td>
-      <td>2.73</td>
-      <td>0.58</td>
-      <td>0.98</td>
-      <td>0.95</td>
-      <td>0.97</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>16</td>
-      <td>2.45</td>
-      <td>1.24</td>
-      <td>0.98</td>
-      <td>0.98</td>
-      <td>0.98</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>17</td>
-      <td>2.15</td>
-      <td>0.47</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>18</td>
-      <td>2.05</td>
-      <td>0.33</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>00:00:01</td>
-    </tr>
-    <tr>
-      <td>19</td>
-      <td>1.71</td>
-      <td>0.14</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>1.0</td>
-      <td>00:00:01</td>
-    </tr>
-  </tbody>
-</table>
+                    <div class="item_right"     style="float: none; width: auto; overflow: hidden;">
+                        <a href='https://geosaurus.maps.arcgis.com/home/item.html?id=a5af5750f9d143238d72bac224f204fb' target='_blank'><b>South Pleasant Valley Road</b>
+                        </a>
+                        <br/>(Cesar Chavez Street to Elmont Drive)<img src='https://geosaurus.maps.arcgis.com/home/js/jsapi/esri/css/images/item_type_icons/layers16.png' style="vertical-align:middle;">StoryMap by arcgis_python
+                        <br/>Last Modified: December 07, 2020
+                        <br/>0 comments, 0 views
+                    </div>
+                </div>
+                
 </div>
 
 </div>
@@ -14749,15 +14394,136 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Model-inference">Model inference<a class="anchor-link" href="#Model-inference">&#182;</a></h3>
+<h3 id="Text-translator-model">Text translator model<a class="anchor-link" href="#Text-translator-model">&#182;</a></h3>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">extract_entities</span><span class="p">(</span><span class="s1">&#39;reports/&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">translator</span> <span class="o">=</span> <span class="n">TextTranslator</span><span class="p">(</span><span class="n">source_language</span><span class="o">=</span><span class="s1">&#39;en&#39;</span><span class="p">,</span> <span class="n">target_language</span><span class="o">=</span><span class="s1">&#39;es&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We will also write some helper functions to help translate the content of story map into the desired language. The <code>replace</code> function is a recursive <a href="#References">[2]</a> function that accepts a json (story map item dictionary) object <code>obj</code> and applies the function <code>func</code> on the values <code>v</code> of the <code>keys</code> list passed in the <code>replace</code> function argument.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">replace</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">replace</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys</span> <span class="k">else</span> <span class="n">v</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span> 
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">obj</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The <code>translate</code> function will translate the English <code>text</code> (passed in the function argument) into Spanish language. The story map text sometimes contain text wrapped inside HTML <a href="#References">[3]</a> tags. We will use <code>BeautifulSoup</code> library to get the non-HTML part of the input text content and use the <code>translator</code>'s <code>translate</code> method to translate the non-HTML part of the input text into desired language (Spanish in this case).</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">translate</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="n">text</span>
+    
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span> 
+
+    <span class="k">for</span> <span class="n">txt</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        
+        <span class="n">translation</span> <span class="o">=</span> <span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">txt</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;translated_text&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">txt</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span> <span class="k">else</span> <span class="n">txt</span>
+        <span class="n">txt</span><span class="o">.</span><span class="n">string</span><span class="o">.</span><span class="n">replace_with</span><span class="p">(</span><span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">translation</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">soup</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Translate-Story-Map-content">Translate Story Map content<a class="anchor-link" href="#Translate-Story-Map-content">&#182;</a></h3>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We will call the story map item's <code>get_data()</code> method to retrieves the data associated with the item.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">smdata</span> <span class="o">=</span> <span class="n">storymapitem</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The call to the above method will return a python dictionary containing the contents of the story map which we wish to translate. We wish to translate not only the <code>text</code> content of the story map but also things like <code>title</code>, <code>summary</code>, <code>captions</code>, etc. To do so we will call the <code>replace</code> function defined above with the desired arguments.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">replace</span><span class="p">(</span><span class="n">smdata</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;alt&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;summary&#39;</span><span class="p">,</span> <span class="s1">&#39;byline&#39;</span><span class="p">,</span> <span class="s1">&#39;caption&#39;</span><span class="p">,</span> <span class="s1">&#39;storyLogoAlt&#39;</span><span class="p">],</span> <span class="n">translate</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Update-cloned-Story-Map-item">Update cloned Story Map item<a class="anchor-link" href="#Update-cloned-Story-Map-item">&#182;</a></h3>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cloned_item</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">cloned_item</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">storymapitem</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">cloned_item</span><span class="o">.</span><span class="n">id</span><span class="p">),</span> 
+    <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">result</span><span class="p">,</span>
+    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">storymapitem</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;translated_text&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">storymapitem</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;translated_text&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;snippet&#39;</span><span class="p">:</span> <span class="n">translator</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">storymapitem</span><span class="p">[</span><span class="s1">&#39;snippet&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;translated_text&#39;</span><span class="p">]})</span>
 </pre></div>
 
      </div>
@@ -14792,232 +14558,73 @@ a.anchor-link {
                 background: #F44336;
             }
         </style>
-      <progress value='9919' class='' max='9919' style='width:300px; height:20px; vertical-align: middle;'></progress>
-      100.00% [9919/9919 01:40<00:00]
+      <progress value='1' class='' max='1' style='width:300px; height:20px; vertical-align: middle;'></progress>
+      100.00% [1/1 00:00<00:00]
     </div>
     
 </div>
 
 </div>
 
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+
+    <div>
+        <style>
+            /* Turns off some styling */
+            progress {
+                /* gets rid of default border in Firefox and Opera. */
+                border: none;
+                /* Needs to be in here for Safari polyfill so background images work as expected. */
+                background-size: auto;
+            }
+            .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+                background: #F44336;
+            }
+        </style>
+      <progress value='1' class='' max='1' style='width:300px; height:20px; vertical-align: middle;'></progress>
+      100.00% [1/1 00:06<00:00]
+    </div>
+    
 </div>
 
 </div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
 
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>TEXT</th>
-      <th>Filename</th>
-      <th>Address</th>
-      <th>Date_and_Time</th>
-      <th>Incident_Type</th>
-      <th>Number_of_Engines</th>
-      <th>Response_Unit</th>
-      <th>Title</th>
-      <th>time_spent_at_incident</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>10080</th>
-      <td>Wheelie bin on fire in Runcorn Time of Incide...</td>
-      <td>2019_12_52.txt</td>
-      <td>Meadow Row, Runcorn</td>
-      <td>30/11/2019 - 17:31</td>
-      <td>wheelie bin</td>
-      <td>One fire engine</td>
-      <td>Widnes</td>
-      <td>Wheelie bin on fire in Runcorn</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>10081</th>
-      <td>Tumble dryer fire in Northwich Time of Incide...</td>
-      <td>2019_12_6.txt</td>
-      <td>Sutton Close, Northwich</td>
-      <td>09/12/2019 - 18:32</td>
-      <td>tumble dryer</td>
-      <td>Two fire engines</td>
-      <td>Northwich,Lymm</td>
-      <td>Tumble dryer fire in Northwich</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>10082</th>
-      <td>Wood on fire in Runcorn Time of Incident: 09/...</td>
-      <td>2019_12_7.txt</td>
-      <td>Astmoor Road, Runcorn</td>
-      <td>09/12/2019 - 17:28</td>
-      <td>small piece,skip</td>
-      <td>One fire engine</td>
-      <td>Runcorn</td>
-      <td>Wood on fire in Runcorn</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>10083</th>
-      <td>One-car collision in Knutsford Time of Incide...</td>
-      <td>2019_12_8.txt</td>
-      <td>Tabley Road, Knutsford</td>
-      <td>09/12/2019 - 17:01</td>
-      <td>collision</td>
-      <td>Two fire engines</td>
-      <td>Knutsford,Lymm</td>
-      <td>One-car collision in Knutsford</td>
-      <td>one hour</td>
-    </tr>
-    <tr>
-      <th>10084</th>
-      <td>Two-car collision in Tattenhall, near Chester...</td>
-      <td>2019_12_9.txt</td>
-      <td>A41 in Tattenhall</td>
-      <td>09/12/2019 - 14:53</td>
-      <td>collision</td>
-      <td>Two fire engines</td>
-      <td>Chester,Malpas,Chester</td>
-      <td>Two-car collision in Tattenhall</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-</div>
+    <div>
+        <style>
+            /* Turns off some styling */
+            progress {
+                /* gets rid of default border in Firefox and Opera. */
+                border: none;
+                /* Needs to be in here for Safari polyfill so background images work as expected. */
+                background-size: auto;
+            }
+            .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+                background: #F44336;
+            }
+        </style>
+      <progress value='1' class='' max='1' style='width:300px; height:20px; vertical-align: middle;'></progress>
+      100.00% [1/1 00:00<00:00]
+    </div>
+    
 </div>
 
 </div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Geocoding-the-results">Geocoding the results<a class="anchor-link" href="#Geocoding-the-results">&#182;</a></h3>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">arcgis.gis</span> <span class="kn">import</span> <span class="n">GIS</span>
-<span class="kn">from</span> <span class="nn">arcgis.geocoding</span> <span class="kn">import</span> <span class="n">batch_geocode</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gis</span> <span class="o">=</span> <span class="n">GIS</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">geocode_locations</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>  <span class="n">address_col</span><span class="p">,</span> <span class="n">Region</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">Country</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">prob</span><span class="o">=</span><span class="mf">0.8</span><span class="p">):</span>
-    <span class="n">processed_df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="c1">#creating address with city and region</span>
-    <span class="n">add_miner</span> <span class="o">=</span> <span class="n">processed_df</span><span class="p">[</span><span class="n">address_col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="sa">f</span><span class="s1">&#39;, </span><span class="si">{</span><span class="n">Region</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">Country</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> 
-    <span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">200</span>
-    <span class="n">chunks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">processed_df</span><span class="p">[</span><span class="n">address_col</span><span class="p">])</span><span class="o">//</span><span class="n">chunk_size</span><span class="o">+</span><span class="mi">1</span>
-    <span class="n">batch</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">chunks</span><span class="p">):</span>
-        <span class="n">batch</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">batch_geocode</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">add_miner</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">chunk_size</span><span class="o">*</span><span class="n">i</span><span class="p">:</span><span class="n">chunk_size</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)]),</span><span class="n">source_country</span><span class="o">=</span><span class="n">Country</span><span class="p">))</span>
-    <span class="n">batch_geo_codes</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">batch</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="nb">dict</span><span class="p">):</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;score&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="p">(</span><span class="n">prob</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span> <span class="ow">and</span> 
-                    <span class="n">item</span><span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="p">]</span><span class="o">!=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">Region</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">Country</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">):</span>
-                <span class="n">batch_geo_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">])</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">batch_geo_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>    
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">batch_geo_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> 
-    <span class="n">processed_df</span><span class="p">[</span><span class="s1">&#39;geo_codes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">batch_geo_codes</span>    
-    <span class="k">return</span> <span class="n">processed_df</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">geocode_locations</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span> <span class="n">address_col</span><span class="o">=</span><span class="s1">&#39;Address&#39;</span><span class="p">,</span><span class="n">Region</span><span class="o">=</span><span class="s1">&#39;Cheshire, New Hampshire&#39;</span><span class="p">,</span> <span class="n">Country</span><span class="o">=</span><span class="s1">&#39;England&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
 
@@ -15026,106 +14633,60 @@ a.anchor-link {
 
 
 
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>TEXT</th>
-      <th>Filename</th>
-      <th>Address</th>
-      <th>Date_and_Time</th>
-      <th>Incident_Type</th>
-      <th>Number_of_Engines</th>
-      <th>Response_Unit</th>
-      <th>Title</th>
-      <th>time_spent_at_incident</th>
-      <th>geo_codes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Person stuck in lift in Neston Time of Inciden...</td>
-      <td>2015_01_1.txt</td>
-      <td>Brook Street, Neston</td>
-      <td>30/01/2015 - 16:36</td>
-      <td>lift</td>
-      <td>One fire engine</td>
-      <td>Ellesmere Port</td>
-      <td>Person stuck in lift in Neston</td>
-      <td></td>
-      <td>{'x': -3.0615354179999485, 'y': 53.29031913500...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Arson investigation after fire in Crewe Time o...</td>
-      <td>2015_01_10.txt</td>
-      <td>Charlesworth Street, Crewe</td>
-      <td>28/01/2015 - 23:09</td>
-      <td>fire</td>
-      <td>Two fire engines</td>
-      <td>Crewe</td>
-      <td>Arson investigation after fire in Crewe</td>
-      <td></td>
-      <td>{'x': -2.437169471999937, 'y': 53.10503593200008}</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Grill pan fire in Macclesfield Time of Inciden...</td>
-      <td>2015_01_100.txt</td>
-      <td>Buxton Road, Macclesfield</td>
-      <td>03/01/2015 - 13:07</td>
-      <td>house fire</td>
-      <td>A fire engine</td>
-      <td>Macclesfield</td>
-      <td>Grill pan fire in Macclesfield</td>
-      <td></td>
-      <td>{'x': -2.1169975709999562, 'y': 53.25923240400...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Flat fire in Macclesfield Time of Incident: 02...</td>
-      <td>2015_01_101.txt</td>
-      <td>Alderley Walk, Macclesfield</td>
-      <td>02/01/2015 - 23:25</td>
-      <td>flat fire</td>
-      <td>Two fire engines</td>
-      <td>Macclesfield</td>
-      <td>Flat fire in Macclesfield</td>
-      <td></td>
-      <td>{'x': -2.116499911999938, 'y': 53.25564503800007}</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Bins and fencing on fire in Warrington Time of...</td>
-      <td>2015_01_102.txt</td>
-      <td>Cabul Close, Warrington</td>
-      <td>02/01/2015 - 20:37</td>
-      <td>fire</td>
-      <td>Two fire engines</td>
-      <td>Warrington</td>
-      <td>Bins and fencing on fire in Warrington</td>
-      <td></td>
-      <td>{'x': -2.5809627409999507, 'y': 53.39918199600...</td>
-    </tr>
-  </tbody>
-</table>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>True</pre>
 </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cloned_item</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div class="item_container" style="height: auto; overflow: hidden; border: 1px solid #cfcfcf; border-radius: 2px; background: #f6fafa; line-height: 1.21429em; padding: 10px;">
+                    <div class="item_left" style="width: 210px; float: left;">
+                       <a href='https://geosaurus.maps.arcgis.com/home/item.html?id=a5af5750f9d143238d72bac224f204fb' target='_blank'>
+                        <img src='data:image/png;base64,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' width='200' height='133' class="itemThumbnail">
+                       </a>
+                    </div>
+
+                    <div class="item_right"     style="float: none; width: auto; overflow: hidden;">
+                        <a href='https://geosaurus.maps.arcgis.com/home/item.html?id=a5af5750f9d143238d72bac224f204fb' target='_blank'><b>South Pleasant Valley Road</b>
+                        </a>
+                        <br/>(Cesar Chavez a Elmont Drive)<img src='https://geosaurus.maps.arcgis.com/home/js/jsapi/esri/css/images/item_type_icons/layers16.png' style="vertical-align:middle;">StoryMap by arcgis_python
+                        <br/>Last Modified: December 07, 2020
+                        <br/>0 comments, 0 views
+                    </div>
+                </div>
+                
 </div>
 
 </div>
